@@ -1,0 +1,58 @@
+<div
+  class="container d-flex flex-justify-content-center"
+  style="padding-top: 95px"
+>
+  <form
+    (ngSubmit)="submit()"
+    [formGroup]="form"
+    class="formulaire d-flex flex-column flex-align-items-center"
+  >
+    <h3 class="mb-20">Login form</h3>
+
+    <!-- new div qui va contenir les champs du FormGroup de "login" imbriqué dans le FormGroup général.
+    Pour le déclarer on utilise "formGroupName" et nom pas [formGroup] qui lui est dédié solo alla balise <form> -->
+    <div formGroupName="login">
+      <div class="d-flex flex-column form-group">
+        <label for="">Email <span class="asterisco">*</span></label>
+        <input
+          formControlName="email"
+          type="email"
+          name="email"
+          placeholder="exemple@gmail.com"
+          (blur)="validateEmail()"
+        />
+        <div *ngIf="erreursForm['email']">
+          <p class="errorText">
+            {{ erreursForm["email"] }}
+          </p>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column form-group">
+        <label for="">Password <span class="asterisco">*</span></label>
+        <input
+          formControlName="password"
+          type="password"
+          name="password"
+          placeholder="digitare password"
+          (blur)="validatePassword()"
+        />
+        <div *ngIf="erreursForm['password']">
+          <p class="errorText">
+            {{ erreursForm["password"] }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="erreursForm['formInvalid']">
+      <div class="separator"></div>
+      <p class="errorText">{{ erreursForm["formInvalid"] }}</p>
+    </div>
+    <div
+      class="d-flex flex-align-content-center flex-justify-content-center actions"
+    >
+      <button class="btn btn-custom">Submit</button>
+    </div>
+  </form>
+</div>

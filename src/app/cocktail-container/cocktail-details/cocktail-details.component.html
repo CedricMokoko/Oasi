@@ -1,0 +1,26 @@
+<div *ngIf="cocktailDetailsEnfant" class="d-flex flex-column">
+  <img
+    class="mb-20"
+    style="height: 150px"
+    [src]="cocktailDetailsEnfant.img"
+    priority
+    [alt]="cocktailDetailsEnfant.name"
+  />
+  <h3 class="mb-10">{{ cocktailDetailsEnfant.name }}</h3>
+  <p class="mb-20">{{ cocktailDetailsEnfant.description }}</p>
+  <ul class="ingredients-list mb-20">
+    <li
+      *ngFor="let ingredient of cocktailDetailsEnfant.ingredients"
+      class="d-flex flex-row"
+    >
+      <span class="flex-fill">{{ ingredient.name }}</span>
+      <span class="badge">{{ ingredient.quantity }}</span>
+    </li>
+  </ul>
+  <div class="d-flex flex-row flex-justify-content-between">
+    <button class="btn btn-primary" routerLink="edit">Edit Cocktail</button>
+    <button class="btn btn-primary" (click)="addToCarello()">
+      Aggiungi al carello
+    </button>
+  </div>
+</div>

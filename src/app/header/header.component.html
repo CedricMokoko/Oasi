@@ -1,0 +1,40 @@
+<nav
+  class="d-flex flex-row flex-justify-content-between flex-align-items-center"
+>
+  <a [routerLink]="['/']" class="logo">
+    <img
+      ngSrc="assets/OasiLogo4.jpg"
+      width="70"
+      height="70"
+      alt="image logo Oasi"
+      priority
+    />
+  </a>
+  <ul class="d-flex">
+    <li *ngIf="authService.isAuthenticated() && cocktail$ | async as cocktail">
+      <a
+        [routerLink]="['/cocktails-list', cocktail._id, cocktail.name]"
+        routerLinkActive="active"
+        >Cocktails-List</a
+      >
+    </li>
+    <li *ngIf="authService.isAuthenticated()">
+      <a [routerLink]="['/carello']" routerLinkActive="active">Carello</a>
+    </li>
+
+    <li *ngIf="!authService.isAuthenticated()">
+      <a [routerLink]="['/login']" routerLinkActive="active">Login</a>
+    </li>
+    <li *ngIf="!authService.isAuthenticated()">
+      <a [routerLink]="['/register']" routerLinkActive="active">Register</a>
+    </li>
+    <li *ngIf="authService.isAuthenticated() && isAdmin()">
+      <a [routerLink]="['/user-management']" routerLinkActive="active"
+        >User Management</a
+      >
+    </li>
+    <li *ngIf="authService.isAuthenticated()">
+      <a (click)="logout()" [routerLink]="['/']">Logout</a>
+    </li>
+  </ul>
+</nav>

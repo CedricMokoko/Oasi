@@ -1,0 +1,12 @@
+<div *ngIf="ingredienti.length > 0; else noIngredients">
+  <ul class="ingredients-list mb-20">
+    <li *ngFor="let ingredient of ingredienti" class="d-flex flex-row">
+      <span class="flex-fill">{{ ingredient.name }}</span>
+      <span class="badge">{{ ingredient.quantity }}</span>
+    </li>
+  </ul>
+</div>
+
+<ng-template #noIngredients>
+  <p>Il carrello è vuoto.</p>
+</ng-template>

@@ -1,0 +1,21 @@
+<h3 class="mb-20">La nostra selection</h3>
+<!-- [(ngModel)]="search" utilisation d'un pipe pour la recherche-->
+<input
+  class="mb-20 w-100"
+  type="text"
+  [(ngModel)]="search"
+  placeholder="Find some cocktails..."
+/>
+<div *ngIf="(cocktailsListEnfant | filter : search).length === 0">
+  Nessun risultato trovato
+</div>
+<ul *ngIf="cocktailsListEnfant" class="mb-20 cocktails-list">
+  <li
+    [routerLink]="[cocktail._id, cocktail.name]"
+    routerLinkActive="activatedLi"
+    *ngFor="let cocktail of cocktailsListEnfant | filter : search"
+  >
+    {{ cocktail.name }}
+  </li>
+</ul>
+<button class="btn btn-primary" routerLink="new">Edit C.List</button>

@@ -1,0 +1,44 @@
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  padding: 0 100px;
+  background-color: var(--primary);
+  .logo {
+    padding: 7px 0 0 5px;
+    img {
+      border-radius: 10%;
+    }
+    &:hover {
+      transform: scale(0.9);
+    }
+    transition: transform 0.3s;
+  }
+  ul {
+    padding-top: 5px;
+    gap: 20px;
+    li {
+      display: inline-block;
+      &:hover {
+        transform: scale(0.9);
+      }
+      transition: transform 0.1s;
+
+      a {
+        padding: 5px 7px 4px;
+        color: var(--lightGray);
+      }
+    }
+  }
+}
+
+// routerLinkActive
+.active {
+  border-radius: 6px;
+  padding: 5px 7px 4px;
+  color: var(--lightGray);
+  background-color: var(--secondary);
+  transition: background-color 0.1s;
+}

@@ -1,1 +1,324 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit; //Pour pas avoir la couleur par default et donc hériter de la couleur du parent
+}
+
+/*Definition de variables*/
+:root {
+  --font-family: "Kalam", cursive;
+  --primary: #574b90;
+  --secondary: #786fa6;
+  --accent: #84904b;
+  // --accent: #b0bc74;
+  // --accent-blue: #6d8db7;
+  --accent-blue: #6381a8;
+  --accent-blueLight: #acc5e1;
+  --lightGray: #ddd;
+  --text-regular: #333;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--text-regular);
+}
+
+// Layout
+
+.container {
+  gap: 20px;
+  padding: 20px 100px;
+  max-width: 100%;
+  display: block;
+  max-width: auto; //Pour centrer le tout
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-justify-content-center {
+  justify-content: center;
+}
+
+.flex-justify-content-between {
+  justify-content: space-between;
+}
+
+.flex-align-items-center {
+  align-items: center;
+}
+
+.flex-align-items-between {
+  align-items: space-between;
+}
+
+.flex-fill {
+  flex: 1 1 auto; //cosi l'elemento prend tuuto lo spazio disponibile
+}
+
+.flex-30 {
+  flex: 1 1 30%;
+}
+
+.flex-40 {
+  flex: 1 1 40%;
+}
+
+.flex-50 {
+  flex: 1 1 50%;
+}
+
+.flex-60 {
+  flex: 1 1 60%;
+}
+
+.flex-70 {
+  flex: 1 1 70%;
+}
+
+//Utils
+
+.w-100 {
+  width: 50%;
+}
+
+.p-10 {
+  padding: 10px;
+}
+
+.p-15 {
+  padding: 15px;
+}
+
+.p-20 {
+  padding: 20px;
+}
+
+.m-10 {
+  margin: 10px;
+}
+
+.m-15 {
+  margin: 15px;
+}
+
+.m-20 {
+  margin: 20px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mt25- {
+  margin-top: 25px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+//Theme
+.btn {
+  font-family: var(--font-family);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+  &-primary {
+    color: white;
+    background-color: var(--secondary);
+    &:hover {
+      background-color: var(--primary);
+    }
+    transition: background-color 0.4s;
+  }
+}
+
+.badge {
+  background-color: var(--secondary);
+  border-radius: 6px;
+  padding: 4px 5px 0px 5px;
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+//Debug pour bien observer les limite de nos élément html
+.d1 {
+  border: 1px solid red;
+}
+
+.d2 {
+  border: 1px solid rgb(0, 255, 30);
+}
+
+// Animation
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fade-in {
+  animation: fadeInScale 1s ease-in-out;
+}
+
+// Genarals
+
+.oasiContainer {
+  min-height: calc(100vh - 85px); /* gli 85.8px est la height della NavBar*/
+  margin-top: 85px;
+  // margin-bottom: 20px;
+}
+
+.ingredients-list {
+  li {
+    margin-bottom: 5px;
+    padding: 10px 15px;
+    border: 1px solid var(--lightGray);
+    border-radius: 3px;
+    cursor: pointer;
+    // &:hover {
+    // background-color: var(--lightGray);
+    // }
+    // transition: background-color 0.3s;
+  }
+}
+
+.formulaire {
+  width: 410px;
+  padding: 30px 0;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 10px;
+  color: white;
+
+  .form-group {
+    min-width: 300px;
+    margin-bottom: 8px;
+    label {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+    input,
+    textarea {
+      font-family: var(--font-family);
+      border: none;
+      border-radius: 3px;
+      outline: none;
+      padding: 6px;
+    }
+    textarea {
+      resize: none;
+    }
+  }
+
+  .actions {
+    min-width: 300px;
+    gap: 7px;
+
+    .btn-custom {
+      font-size: 13px;
+      padding: 7px 8px 4px 8px;
+      margin-top: 20px;
+      background-color: var(--secondary);
+      color: white;
+
+      &:hover {
+        color: var(--secondary);
+        background-color: white;
+      }
+
+      &:disabled {
+        &:hover {
+          background-color: var(--secondary);
+          color: white;
+        }
+      }
+      transition: all 0.4s;
+    }
+  }
+
+  .errorText {
+    color: red;
+    font-size: 13px;
+    max-width: 300px;
+    margin-top: 5px;
+  }
+
+  .asterisco {
+    color: red;
+  }
+
+  .separator {
+    border-top: 1px solid white;
+    margin: 10px 0 0px 0;
+    border-radius: 20px;
+    height: 3px;
+    background-color: white;
+    max-width: 300px;
+  }
+}
+
+.scrollBarStyle {
+  &::-webkit-scrollbar {
+    width: 7px;
+    background-color: white;
+    border-radius: 3px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--accent-blue);
+    border-radius: 3px;
+  }
+}
+
+button:disabled {
+  opacity: 0.5;
+  background-color: var(--secondary);
+  color: white;
+  cursor: not-allowed;
+  &:hover {
+    opacity: 0.5;
+    background-color: var(--secondary);
+    color: white;
+  }
+}

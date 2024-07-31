@@ -1,0 +1,101 @@
+<div
+  class="container d-flex flex-justify-content-center"
+  style="padding-top: 30px"
+>
+  <form
+    *ngIf="cocktailForm"
+    (ngSubmit)="submit()"
+    [formGroup]="cocktailForm"
+    class="formulaire d-flex flex-column flex-align-items-center"
+  >
+    <div class="d-flex flex-column form-group">
+      <label for="">Name <span class="asterisco">*</span></label>
+      <input
+        #nameInput
+        name="name"
+        formControlName="name"
+        type="text"
+        placeholder="cocktail name..."
+      />
+    </div>
+
+    <div class="d-flex flex-column form-group">
+      <label for="">Image <span class="asterisco">*</span></label>
+      <input
+        formControlName="img"
+        name="img"
+        type="text"
+        placeholder="image link..."
+      />
+    </div>
+
+    <div class="d-flex flex-column form-group">
+      <label for="">Description <span class="asterisco">*</span></label>
+      <textarea
+        class="scrollBarStyle"
+        formControlName="description"
+        type="text"
+        placeholder="text description..."
+        rows="3"
+        spellcheck="true"
+        name="description"
+      >
+      </textarea>
+    </div>
+
+    <div
+      formArrayName="ingredients"
+      class="d-flex flex-column form-group-ingredients"
+    >
+      <label>Ingredients <span class="asterisco">*</span></label>
+      <div
+        class="d-flex flex-row flex-justify-content-between"
+        [formGroupName]="index"
+        *ngFor="let ingredient of ingredients.controls; let index = index"
+      >
+        <input
+          class="input-ingredients"
+          formControlName="name"
+          name="name"
+          type="text"
+          placeholder="ingredient's name..."
+        />
+        <input
+          class="input-ingredients"
+          formControlName="quantity"
+          name="quantity"
+          type="number"
+          placeholder="quantity..."
+        />
+      </div>
+    </div>
+    <hr class="separator" />
+
+    <!-- routerLink="../" me fait retourner sur la route precedente.
+     [disabled]="cocktailForm.invalid" permet de desactiver le btn si le form n'est pas
+     valide et du coté du css on peut donner un effet visuel en utilisant ":disabled" -->
+    <div class="d-flex flex-align-content-center actions">
+      <button [disabled]="cocktailForm.invalid" class="btn btn-custom">
+        {{ cocktail ? "Edit" : "Submit" }}
+      </button>
+      <button
+        class="btn btn-custom"
+        type="button"
+        (click)="redirectToCocktailsList()"
+      >
+        Annuler
+      </button>
+      <button (click)="addIngredient()" type="button" class="btn btn-custom">
+        + ingredients
+      </button>
+      <button
+        *ngIf="cocktail"
+        (click)="delete()"
+        type="button"
+        class="btn btn-custom"
+      >
+        Delete
+      </button>
+    </div>
+  </form>
+</div>

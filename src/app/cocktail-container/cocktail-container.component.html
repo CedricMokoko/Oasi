@@ -1,0 +1,26 @@
+<div
+  class="container oasiContainer d-flex flex-row flex-justify-content-center"
+>
+  <app-cocktail-list
+    [cocktailsListEnfant]="cocktailsListParent$ | async"
+    class="flex-60"
+  ></app-cocktail-list>
+
+  <!-- Questo button serve à ripristinare l'api che ospita i dati -->
+  <!-- <button (click)="clearCarello()">Svuota il carrello</button> -->
+
+  <!-- Pour la sous-root 'CocktailDetailsComponent' -->
+  <div class="flex-40">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!-- NB: 
+ 
+-> Tra [] on met le nom de l'attribut du composant enfant; 
+
+-> Tra "" on met le nom de l'attribut du composant parent;
+
+-> Tra () on met le nom de la du composant enfant qui transmet de la 
+data au composant parent cioè la methode qui a le decorateur @Output()
+dans la class enfant -->

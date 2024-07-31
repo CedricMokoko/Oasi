@@ -1,0 +1,19 @@
+.form-group-ingredients {
+  padding: 0px;
+  min-width: 300px;
+  margin-bottom: 8px;
+  label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 3px;
+  }
+  input {
+    max-width: 148.5px;
+    font-family: var(--font-family);
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    padding: 6px;
+    margin-bottom: 3px;
+  }
+}
