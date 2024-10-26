@@ -101,7 +101,7 @@ export class CocktailService {
   }
 
   constructor(private http: HttpClient) {
-    //this.seed(); //metodo da chiamare solo una volta al lancio per popolare l'api
+    // this.seed(); //metodo da chiamare solo una volta al lancio per popolare l'api
   }
 
   public fetchCocktails$(): Observable<Cocktail[]> {
@@ -141,56 +141,46 @@ export class CocktailService {
   //       ],
   //     })
   //     .subscribe();
-
-  //   this.http
-  //     .post('https://restapi.fr/api/oasi', {
-  //       name: 'Espresso Martini',
-  //       img: 'https://www.allrecipes.com/thmb/XgmkthyaJksY3erwXwyAwlhKXXU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/222881-espresso-martini-cocktail-3x4-121-copy-ccad39f0f9774b4bba8149acf0465ec0.jpg',
-  //       description:
-  //         "Un vodka martini è un cocktail di vodka a base di caffè espresso e liquore al caffè. La bevanda è nata negli anni '80 e ha registrato un'impennata di popolarità negli anni '20. L'atto di scuotere l'espresso con ghiaccio, liquore e liquori crea una copertura cremosa e schiumosa. ",
-  //       ingredients: [
-  //         {
-  //           name: 'Mango',
-  //           quantity: 1,
-  //         },
-  //         {
-  //           name: 'Pesca',
-  //           quantity: 3,
-  //         },
-  //       ],
-  //     })
-  //     .subscribe();
-
-  //   this.http
-  //     .post('https://restapi.fr/api/oasi', {
-  //       name: 'Mojito',
-  //       img: 'https://www.spiritacademy.it/img/cms/landing/2022/Mojito/mojito.jpg',
-  //       description:
-  //         'Un cocktail conosciuto in tutto il mondo che prende il nome da Sir Francis Drake, esploratore inglese che visitò Cuba e l’Avana nel 1586. Nella prima metà del ‘900 appare ufficialmente con il nome di Mojito in un manuale. Gli ingredienti principali sono originari di Cuba: rum, lime, menta e zucchero. La menta assicura una dose extra di refrigerio, molto gradita da Ernest Hemingway che consumava regolarmente mojito a La Bodeguita del Medio, un bar dell’Avana.',
-  //       ingredients: [
-  //         {
-  //           name: 'Perrier',
-  //           quantity: 2,
-  //         },
-  //       ],
-  //     })
-  //     .subscribe();
-
-  //   this.http
-  //     .post('https://restapi.fr/api/oasi', {
-  //       name: 'Negroni',
-  //       img: 'https://www.iconmagazine.it/wp-content/uploads/2019/01/Cocktail-pi%C3%B9-bevuti-al-mondo-Negroni.jpg',
-  //       description:
-  //         'Per la prima volta dopo tanti anni il Negroni sorpassa l’Old Fashioned e si aggiudica la prima posizione tra i cocktail classici più amati al mondo. Tutto ha inizio a Firenze tra il 1919 e il 1920 quando il conte Camillo Negroni richiede un Americano più “forte” al suo barista di fiducia, che lo accontenta con una dose generosa di gin in sostituzione del seltz, in onore agli ultimi viaggi che il conte aveva fatto a Londra. Il resto è storia. Il Negroni, composto da gin, vermouth rosso e Campari in parti uguali, oggi è il cocktail italiano più bevuto al mondo.',
-  //       ingredients: [
-  //         {
-  //           name: 'Perrier',
-  //           quantity: 2,
-  //         },
-  //       ],
-  //     })
-  //     .subscribe();
-
+  //   this.http.post('https://restapi.fr/api/oasi', {
+  //     name: 'Espresso Martini',
+  //     img: 'https://www.allrecipes.com/thmb/XgmkthyaJksY3erwXwyAwlhKXXU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/222881-espresso-martini-cocktail-3x4-121-copy-ccad39f0f9774b4bba8149acf0465ec0.jpg',
+  //     description:
+  //       "Un vodka martini è un cocktail di vodka a base di caffè espresso e liquore al caffè. La bevanda è nata negli anni '80 e ha registrato un'impennata di popolarità negli anni '20. L'atto di scuotere l'espresso con ghiaccio, liquore e liquori crea una copertura cremosa e schiumosa. ",
+  //     ingredients: [
+  //       {
+  //         name: 'Mango',
+  //         quantity: 1,
+  //       },
+  //       {
+  //         name: 'Pesca',
+  //         quantity: 3,
+  //       },
+  //     ],
+  //   }).subscribe;
+  //   this.http.post('https://restapi.fr/api/oasi', {
+  //     name: 'Mojito',
+  //     img: 'https://www.spiritacademy.it/img/cms/landing/2022/Mojito/mojito.jpg',
+  //     description:
+  //       'Un cocktail conosciuto in tutto il mondo che prende il nome da Sir Francis Drake, esploratore inglese che visitò Cuba e l’Avana nel 1586. Nella prima metà del ‘900 appare ufficialmente con il nome di Mojito in un manuale. Gli ingredienti principali sono originari di Cuba: rum, lime, menta e zucchero. La menta assicura una dose extra di refrigerio, molto gradita da Ernest Hemingway che consumava regolarmente mojito a La Bodeguita del Medio, un bar dell’Avana.',
+  //     ingredients: [
+  //       {
+  //         name: 'Perrier',
+  //         quantity: 2,
+  //       },
+  //     ],
+  //   }).subscribe;
+  //   this.http.post('https://restapi.fr/api/oasi', {
+  //     name: 'Negroni',
+  //     img: 'https://www.iconmagazine.it/wp-content/uploads/2019/01/Cocktail-pi%C3%B9-bevuti-al-mondo-Negroni.jpg',
+  //     description:
+  //       'Per la prima volta dopo tanti anni il Negroni sorpassa l’Old Fashioned e si aggiudica la prima posizione tra i cocktail classici più amati al mondo. Tutto ha inizio a Firenze tra il 1919 e il 1920 quando il conte Camillo Negroni richiede un Americano più “forte” al suo barista di fiducia, che lo accontenta con una dose generosa di gin in sostituzione del seltz, in onore agli ultimi viaggi che il conte aveva fatto a Londra. Il resto è storia. Il Negroni, composto da gin, vermouth rosso e Campari in parti uguali, oggi è il cocktail italiano più bevuto al mondo.',
+  //     ingredients: [
+  //       {
+  //         name: 'Perrier',
+  //         quantity: 2,
+  //       },
+  //     ],
+  //   }).subscribe;
   //   this.http
   //     .post('https://restapi.fr/api/oasi', {
   //       name: 'Margarita',

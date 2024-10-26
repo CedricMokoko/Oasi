@@ -1,0 +1,60 @@
+pipeline {
+    agent {
+      label 'agent115'
+    }
+    options {
+        skipDefaultCheckout(true)
+    }
+    stages {
+        stage('Build') {
+            steps {
+                cleanWs()
+                checkout scm
+                echo "Building Aperture ${env.JOB_NAME}..."
+            }
+        }
+        stage('Run Tests on Agent 115') {
+            steps {
+                script {
+                    uftScenarioLoad archiveTestResultsMode: 'ALWAYS_ARCHIVE_TEST_REPORT', 
+                        testPaths: '''
+                            C:/Jenkins/workspace/Aperture_Pipeline/Aperture/APDC_101
+                            C:/Jenkins/workspace/Aperture_Pipeline/Aperture/SICU_101
+                            C:/Jenkins/workspace/Aperture_Pipeline/Aperture/APCL
+                            C:/Jenkins/workspace/Aperture_Pipeline/Aperture/Cash_Flow_Socco_ATM
+                            C:/Jenkins/workspace/Aperture_Pipeline/Aperture/CashFlow_SoCo_Banconote
+                            C:/Jenkins/workspace/Aperture_Pipeline/Aperture/CashFlow_SoCo_Banconote_programmate
+                            C:/Jenkins/workspace/Aperture_Pipeline/Aperture/CashFlow_SoCo_monete
+                            C:/Jenkins/workspace/Aperture_Pipeline/Aperture/CashFlow_VeCo_banconote
+                            C:/Jenkins/workspace/Aperture_Pipeline/Aperture/IMCO_101
+                            C:/Jenkins/workspace/Aperture_Pipeline/Aperture/GCCO_101_201
+                            C:/Jenkins/workspace/Aperture_Pipeline/Aperture/GICA_101
+                            C:/Jenkins/workspace/Aperture_Pipeline/Aperture/VISC_101
+                            C:/Jenkins/workspace/Aperture_Pipeline/Aperture/INIS_101_102_104
+                            C:/Jenkins/workspace/Aperture_Pipeline/Aperture/CONS_101
+                            C:/Jenkins/workspace/Aperture_Pipeline/Aperture/RISM_101_102_103_104
+                            C:/Jenkins/workspace/Aperture_Pipeline/Aperture/RIOB_201
+                            C:/Jenkins/workspace/Aperture_Pipeline/Aperture/BYRK
+                            C:/Jenkins/workspace/Aperture_Pipeline/Aperture/BYOP
+                            C:/Jenkins/workspace/Aperture_Pipeline/Aperture/BYCL_101
+                            C:/Jenkins/workspace/Aperture_Pipeline/Aperture/APRC
+                        '''
+                }
+            }
+        }
+    }
+    post {
+        always {
+            cleanWs(
+                cleanWhenNotBuilt: false,
+                deleteDirs: true,
+                disableDeferredWipeout: true,
+                notFailBuild: true,
+                patterns: [
+                    [pattern: '.gitignore', type: 'INCLUDE'],
+                    [pattern: '.propsfile', type: 'EXCLUDE']
+                ]
+            )
+        }
+    }
+}
